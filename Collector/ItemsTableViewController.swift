@@ -11,7 +11,6 @@ import UIKit
 class ItemsTableViewController: UITableViewController {
 
     var items : [Item] = []
-//    var selectedItem : Item?    // by default an optional is nil by its very nature
 
     override func viewDidLoad() {
         super.viewDidLoad()
