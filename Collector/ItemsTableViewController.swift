@@ -47,11 +47,11 @@ class ItemsTableViewController: UITableViewController {
         // print("Call from tableView CellForRowAt")
         
         // get current row data
-        let item = items[indexPath.row]
-        //print(item.description)
-        cell.textLabel?.text = item.title
+        let currentitem = items[indexPath.row]
         
-        if let imageData = item.image {
+        cell.textLabel?.text = currentitem.title
+        
+        if let imageData = currentitem.image {
             cell.imageView?.image = UIImage(data: imageData) // to convert image data back as image before displaying
         }
         return cell
@@ -72,8 +72,8 @@ class ItemsTableViewController: UITableViewController {
 
             if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
 
-                let item = items[indexPath.row]
-                context.delete(item)
+                let currentitem = items[indexPath.row]
+                context.delete(currentitem)
                 getItems()
             }
         }
@@ -83,19 +83,22 @@ class ItemsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Photo Selected!")
         
-        let item = items[indexPath.row]
-        performSegue(withIdentifier: "ourSegue", sender: item)
+        let currentitem = items[indexPath.row]
+        performSegue(withIdentifier: "ourSegue", sender: currentitem)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let addItemVC = segue.destination as? AddItemViewController {
             addItemVC.previousVC = self
         }
 
         if let displayPhotoVC = segue.destination as? DisplayPhotoViewController {
-            if let item = sender as? item {
-                print("Item.title is : \(item.title)")
-                displayPhotoVC.photoSelectedDesc.text = item.title
+            print("dislayPhotoVC Segue called")
+            
+            if let currentitem = sender as? Item {
+                print("currentItem.title is : \(String(describing: currentitem.title))")
+                displayPhotoVC.photoSelectedDesc.text = currentitem.title
                 displayPhotoVC.previousVC = self
             }
         }

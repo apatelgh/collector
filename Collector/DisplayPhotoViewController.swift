@@ -11,7 +11,7 @@ import UIKit
 class DisplayPhotoViewController: UIViewController {
 
     var previousVC = ItemsTableViewController()
-    var storedPhoto = item()    // by default an optional is nil by its very nature
+    var storedPhoto = displayitem()    // by default an optional is nil by its very nature
     //var photoSelected = ""
     
     @IBOutlet weak var photoSelected: UIImageView!
