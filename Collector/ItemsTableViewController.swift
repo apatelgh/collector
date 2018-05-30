@@ -12,9 +12,11 @@ class ItemsTableViewController: UITableViewController {
 
     var items : [Item] = []
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        getItems()
    }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +48,7 @@ class ItemsTableViewController: UITableViewController {
         
         // get current row data
         let item = items[indexPath.row]
-        
+        //print(item.description)
         cell.textLabel?.text = item.title
         
         if let imageData = item.image {
@@ -73,6 +75,28 @@ class ItemsTableViewController: UITableViewController {
                 let item = items[indexPath.row]
                 context.delete(item)
                 getItems()
+            }
+        }
+    }
+
+   
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Photo Selected!")
+        
+        let item = items[indexPath.row]
+        performSegue(withIdentifier: "ourSegue", sender: item)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let addItemVC = segue.destination as? AddItemViewController {
+            addItemVC.previousVC = self
+        }
+
+        if let displayPhotoVC = segue.destination as? DisplayPhotoViewController {
+            if let item = sender as? item {
+                print("Item.title is : \(item.title)")
+                displayPhotoVC.photoSelectedDesc.text = item.title
+                displayPhotoVC.previousVC = self
             }
         }
     }

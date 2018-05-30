@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		046FDAA120BEDA9B001EED3F /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FDAA020BEDA9B001EED3F /* item.swift */; };
+		04ABDB9320BDC11000965A94 /* DisplayPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABDB9220BDC11000965A94 /* DisplayPhotoViewController.swift */; };
 		04DBEBD620B73EA100166083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBEBD520B73EA100166083 /* AppDelegate.swift */; };
 		04DBEBDB20B73EA100166083 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DBEBD920B73EA100166083 /* Main.storyboard */; };
 		04DBEBDE20B73EA100166083 /* Collector.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04DBEBDC20B73EA100166083 /* Collector.xcdatamodeld */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		046FDAA020BEDA9B001EED3F /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
+		04ABDB9220BDC11000965A94 /* DisplayPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPhotoViewController.swift; sourceTree = "<group>"; };
 		04DBEBD220B73EA100166083 /* Collector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DBEBD520B73EA100166083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DBEBDA20B73EA100166083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 				04DBEBD520B73EA100166083 /* AppDelegate.swift */,
 				04DBEBEC20B76D3500166083 /* ItemsTableViewController.swift */,
 				04DBEBEA20B7579400166083 /* AddItemViewController.swift */,
+				04ABDB9220BDC11000965A94 /* DisplayPhotoViewController.swift */,
+				046FDAA020BEDA9B001EED3F /* item.swift */,
 				04DBEBD920B73EA100166083 /* Main.storyboard */,
 				04DBEBDF20B73EA300166083 /* Assets.xcassets */,
 				04DBEBE120B73EA300166083 /* LaunchScreen.storyboard */,
@@ -144,6 +150,8 @@
 				04DBEBDE20B73EA100166083 /* Collector.xcdatamodeld in Sources */,
 				04DBEBD620B73EA100166083 /* AppDelegate.swift in Sources */,
 				04DBEBED20B76D3500166083 /* ItemsTableViewController.swift in Sources */,
+				04ABDB9320BDC11000965A94 /* DisplayPhotoViewController.swift in Sources */,
+				046FDAA120BEDA9B001EED3F /* item.swift in Sources */,
 				04DBEBEB20B7579400166083 /* AddItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
