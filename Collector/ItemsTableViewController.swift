@@ -15,7 +15,6 @@ class ItemsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getItems()
    }
     
