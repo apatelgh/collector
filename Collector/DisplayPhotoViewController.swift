@@ -11,8 +11,7 @@ import UIKit
 class DisplayPhotoViewController: UIViewController {
 
     var previousVC = ItemsTableViewController()
-    var storedPhoto = displayitem()    // by default an optional is nil by its very nature
-    //var photoSelected = ""
+    var selectedItem = displayItem()    // create instance of a DisplayItem to store the selected item
     
     @IBOutlet weak var photoSelected: UIImageView!
     @IBOutlet weak var photoSelectedDesc: UILabel!
@@ -20,12 +19,9 @@ class DisplayPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("storedPhoto.title is : \(storedPhoto.title)")
-        photoSelectedDesc.text = storedPhoto.title
-        
-        }
+        // assign selected item object's property values to display view controller page
+        photoSelectedDesc.text = selectedItem.title
+        photoSelected.image = selectedItem.image
+    }
     
-        // photoSelected.image = UIImagePNGRepresentation(photoSelected.image!)
-        //photoSelected.image = UIImage(data: photoSelected.image)
-
 }

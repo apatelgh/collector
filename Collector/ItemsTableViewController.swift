@@ -11,7 +11,7 @@ import UIKit
 class ItemsTableViewController: UITableViewController {
 
     var items : [Item] = []
-
+    let selectedItem = displayItem() // instantiate DisplayItem object to use for storage of selected item
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,10 +80,24 @@ class ItemsTableViewController: UITableViewController {
 
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Photo Selected!")
         
-        let currentitem = items[indexPath.row]
-        performSegue(withIdentifier: "ourSegue", sender: currentitem)
+        let currentItem = items[indexPath.row]
+        print("Photo Selected! : \(currentItem.title)")
+
+        // set Selected Items obejct properties to those of the currently selected item
+        if let selectedItemTitle = currentItem.title {
+            selectedItem.title = selectedItemTitle
+        }
+
+        if let selectedItemImage = currentItem.image {      //unwrapping and conversion of image data types
+            if let selectedImageFromData = UIImage(data: selectedItemImage) {
+                print("Image converted from Data to Image")
+                selectedItem.image = selectedImageFromData
+            }
+        }
+        
+        // call the segue function to invoke the display photo view controller
+        performSegue(withIdentifier: "ourSegue", sender: selectedItem)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,11 +107,10 @@ class ItemsTableViewController: UITableViewController {
         }
 
         if let displayPhotoVC = segue.destination as? DisplayPhotoViewController {
-            print("dislayPhotoVC Segue called")
+            print("displayPhotoVC Segue called")
             
-            if let currentitem = sender as? Item {
-                print("currentItem.title is : \(String(describing: currentitem.title))")
-                displayPhotoVC.photoSelectedDesc.text = currentitem.title
+            if let currentItem = sender as? displayItem {
+                displayPhotoVC.selectedItem = currentItem  //set the display photo view controller properties to currently selected
                 displayPhotoVC.previousVC = self
             }
         }

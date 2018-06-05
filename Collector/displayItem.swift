@@ -8,7 +8,7 @@
 
 import UIKit
 
-class displayitem {
+class displayItem {
     var image = #imageLiteral(resourceName: "photo-camera")
-    var title = "Initial Desc"
+    var title = "Initial desc"
 }
