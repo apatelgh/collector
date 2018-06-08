@@ -82,7 +82,7 @@ class ItemsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let currentItem = items[indexPath.row]
-        print("Photo Selected! : \(currentItem.title)")
+//        print("Photo Selected! : \(currentItem.title)")
 
         // set Selected Items obejct properties to those of the currently selected item
         if let selectedItemTitle = currentItem.title {
@@ -91,7 +91,7 @@ class ItemsTableViewController: UITableViewController {
 
         if let selectedItemImage = currentItem.image {      //unwrapping and conversion of image data types
             if let selectedImageFromData = UIImage(data: selectedItemImage) {
-                print("Image converted from Data to Image")
+//                print("Image converted from Data to Image")
                 selectedItem.image = selectedImageFromData
             }
         }
@@ -107,7 +107,7 @@ class ItemsTableViewController: UITableViewController {
         }
 
         if let displayPhotoVC = segue.destination as? DisplayPhotoViewController {
-            print("displayPhotoVC Segue called")
+//            print("displayPhotoVC Segue called")
             
             if let currentItem = sender as? displayItem {
                 displayPhotoVC.selectedItem = currentItem  //set the display photo view controller properties to currently selected
