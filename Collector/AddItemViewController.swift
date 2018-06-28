@@ -10,12 +10,13 @@ import UIKit
 
 class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var previousVC = ItemsTableViewController()
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var itemImageView: UIImageView!
     
     var imagePicker = UIImagePickerController()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,18 +49,23 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func addTapped(_ sender: Any) {
         
         if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
-            
+
+        if titleTextField.text != "" && itemImageView.image != #imageLiteral(resourceName: "photo-camera") {
+
             let item = Item(entity: Item.entity(), insertInto: context)
-            
-            item.title = titleTextField.text
-            
+
             if let image = itemImageView.image {                        // first get the image
                 if let imageData = UIImagePNGRepresentation(image) {    // then convert image to Data format
                     item.image = imageData
                 }
             }
-            
+
+            //print("image is nil: \(String(describing: item.image))")
+            //print("title is nil: \(String(describing: item.title))")
+
+            item.title = titleTextField.text
             try? context.save()
+        }
             
             navigationController?.popViewController(animated: true)
         }

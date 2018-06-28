@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OAJ-V8-jxv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OAJ-V8-jxv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -43,10 +43,55 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="vMe-0a-UYY" kind="show" identifier="ourSegue" id="m5c-Dk-cQ6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7G-Zh-Uhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="265" y="159"/>
+        </scene>
+        <!--Display Photo View Controller-->
+        <scene sceneID="g1z-t7-Z1e">
+            <objects>
+                <viewController id="vMe-0a-UYY" customClass="DisplayPhotoViewController" customModule="Collector" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uxX-lK-J0r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iyB-Zq-E3y">
+                                <rect key="frame" x="20" y="104" width="335" height="459"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aj-1G-60U">
+                                <rect key="frame" x="10" y="573" width="355" height="84"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8aj-1G-60U" firstAttribute="leading" secondItem="BFR-bb-FnJ" secondAttribute="leading" constant="10" id="53Y-Nd-fva"/>
+                            <constraint firstItem="BFR-bb-FnJ" firstAttribute="trailing" secondItem="8aj-1G-60U" secondAttribute="trailing" constant="10" id="7ff-ny-EsZ"/>
+                            <constraint firstItem="BFR-bb-FnJ" firstAttribute="bottom" secondItem="8aj-1G-60U" secondAttribute="bottom" constant="10" id="BDZ-6s-pfa"/>
+                            <constraint firstItem="iyB-Zq-E3y" firstAttribute="centerX" secondItem="uxX-lK-J0r" secondAttribute="centerX" id="Fp7-6b-l64"/>
+                            <constraint firstItem="iyB-Zq-E3y" firstAttribute="top" secondItem="BFR-bb-FnJ" secondAttribute="top" constant="40" id="Jpk-xN-7TO"/>
+                            <constraint firstItem="BFR-bb-FnJ" firstAttribute="trailing" secondItem="iyB-Zq-E3y" secondAttribute="trailing" constant="20" id="Khe-Ig-EPY"/>
+                            <constraint firstItem="8aj-1G-60U" firstAttribute="centerX" secondItem="uxX-lK-J0r" secondAttribute="centerX" id="Ynf-UY-ErR"/>
+                            <constraint firstItem="8aj-1G-60U" firstAttribute="top" secondItem="iyB-Zq-E3y" secondAttribute="bottom" constant="10" id="h7G-vB-pit"/>
+                            <constraint firstItem="iyB-Zq-E3y" firstAttribute="leading" secondItem="BFR-bb-FnJ" secondAttribute="leading" constant="20" id="m30-gr-iL9"/>
+                            <constraint firstItem="iyB-Zq-E3y" firstAttribute="centerY" secondItem="uxX-lK-J0r" secondAttribute="centerY" id="sPD-F2-NOb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BFR-bb-FnJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoSelected" destination="iyB-Zq-E3y" id="mVZ-OJ-U48"/>
+                        <outlet property="photoSelectedDesc" destination="8aj-1G-60U" id="Ynl-sd-Sz1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h5m-DW-41b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265" y="904"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="CRG-w5-PX1">

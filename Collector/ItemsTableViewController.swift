@@ -11,10 +11,11 @@ import UIKit
 class ItemsTableViewController: UITableViewController {
 
     var items : [Item] = []
+    let selectedItem = displayItem() // instantiate DisplayItem object to use for storage of selected item
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getItems()
    }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,11 +46,11 @@ class ItemsTableViewController: UITableViewController {
         // print("Call from tableView CellForRowAt")
         
         // get current row data
-        let item = items[indexPath.row]
+        let currentitem = items[indexPath.row]
         
-        cell.textLabel?.text = item.title
+        cell.textLabel?.text = currentitem.title
         
-        if let imageData = item.image {
+        if let imageData = currentitem.image {
             cell.imageView?.image = UIImage(data: imageData) // to convert image data back as image before displaying
         }
         return cell
@@ -70,9 +71,47 @@ class ItemsTableViewController: UITableViewController {
 
             if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
 
-                let item = items[indexPath.row]
-                context.delete(item)
+                let currentitem = items[indexPath.row]
+                context.delete(currentitem)
                 getItems()
+            }
+        }
+    }
+
+   
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let currentItem = items[indexPath.row]
+//        print("Photo Selected! : \(currentItem.title)")
+
+        // set Selected Items obejct properties to those of the currently selected item
+        if let selectedItemTitle = currentItem.title {
+            selectedItem.title = selectedItemTitle
+        }
+
+        if let selectedItemImage = currentItem.image {      //unwrapping and conversion of image data types
+            if let selectedImageFromData = UIImage(data: selectedItemImage) {
+//                print("Image converted from Data to Image")
+                selectedItem.image = selectedImageFromData
+            }
+        }
+        
+        // call the segue function to invoke the display photo view controller
+        performSegue(withIdentifier: "ourSegue", sender: selectedItem)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let addItemVC = segue.destination as? AddItemViewController {
+            addItemVC.previousVC = self
+        }
+
+        if let displayPhotoVC = segue.destination as? DisplayPhotoViewController {
+//            print("displayPhotoVC Segue called")
+            
+            if let currentItem = sender as? displayItem {
+                displayPhotoVC.selectedItem = currentItem  //set the display photo view controller properties to currently selected
+                displayPhotoVC.previousVC = self
             }
         }
     }
